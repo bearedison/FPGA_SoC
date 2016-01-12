@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "E:/Pure_Path/Projects/FPGA/FPGA_Course/multi_function_counter/multi_function_counter_tb_isim_beh.exe" -prj "E:/Pure_Path/Projects/FPGA/FPGA_Course/multi_function_counter/multi_function_counter_tb_beh.prj" "work.multi_function_counter_tb" "work.glbl" 

@@ -1,0 +1,428 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.26 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.26 secs
+ 
+--> Reading design: multi_function_counter.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "multi_function_counter.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "multi_function_counter"
+Output Format                      : NGC
+Target Device                      : xc3s100e-4-cp132
+
+---- Source Options
+Top Module Name                    : multi_function_counter
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "multi_function_counter.v" in library work
+Module <multi_function_counter> compiled
+No errors in compilation
+Analysis of file <"multi_function_counter.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <multi_function_counter> in library <work> with parameters.
+	t_1 = "00000000000000001100001101010000"
+	t_2 = "111110100"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <multi_function_counter>.
+	t_1 = 32'b00000000000000001100001101010000
+	t_2 = 9'b111110100
+Module <multi_function_counter> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <multi_function_counter>.
+    Related source file is "multi_function_counter.v".
+    Found 16x7-bit ROM for signal <digit$mux0001> created at line 252.
+    Found 1-bit register for signal <cout>.
+    Found 7-bit register for signal <digit>.
+    Found 2-bit register for signal <word>.
+    Found 32-bit up counter for signal <count_1>.
+    Found 10-bit up counter for signal <count_2>.
+    Found 1-bit 4-to-1 multiplexer for signal <cout$mux0002> created at line 69.
+    Found 4-bit register for signal <data_out>.
+    Found 4-bit addsub for signal <data_out$addsub0000>.
+    Found 4-bit comparator lessequal for signal <digit$cmp_le0000> created at line 274.
+    Found 7-bit 4-to-1 multiplexer for signal <digit$mux0000> created at line 249.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   2 Counter(s).
+	inferred  14 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+	inferred   8 Multiplexer(s).
+Unit <multi_function_counter> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x7-bit ROM                                          : 1
+# Adders/Subtractors                                   : 1
+ 4-bit addsub                                          : 1
+# Counters                                             : 2
+ 10-bit up counter                                     : 1
+ 32-bit up counter                                     : 1
+# Registers                                            : 4
+ 1-bit register                                        : 1
+ 2-bit register                                        : 1
+ 4-bit register                                        : 1
+ 7-bit register                                        : 1
+# Comparators                                          : 1
+ 4-bit comparator lessequal                            : 1
+# Multiplexers                                         : 2
+ 1-bit 4-to-1 multiplexer                              : 1
+ 7-bit 4-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <multi_function_counter>.
+INFO:Xst:3021 - HDL ADVISOR - Asynchronous or synchronous initialization of the register <data_out> prevents it from being combined with the ROM <Mrom_digit_mux0001> for implementation as read-only block RAM.
+Unit <multi_function_counter> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x7-bit ROM                                          : 1
+# Adders/Subtractors                                   : 1
+ 4-bit addsub                                          : 1
+# Counters                                             : 2
+ 10-bit up counter                                     : 1
+ 32-bit up counter                                     : 1
+# Registers                                            : 14
+ Flip-Flops                                            : 14
+# Comparators                                          : 1
+ 4-bit comparator lessequal                            : 1
+# Multiplexers                                         : 2
+ 1-bit 4-to-1 multiplexer                              : 1
+ 7-bit 4-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <multi_function_counter> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block multi_function_counter, actual ratio is 8.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 56
+ Flip-Flops                                            : 56
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : multi_function_counter.ngr
+Top Level Output File Name         : multi_function_counter
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 23
+
+Cell Usage :
+# BELS                             : 238
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 40
+#      LUT2                        : 10
+#      LUT2_L                      : 2
+#      LUT3                        : 11
+#      LUT3_D                      : 1
+#      LUT3_L                      : 3
+#      LUT4                        : 51
+#      LUT4_D                      : 2
+#      LUT4_L                      : 12
+#      MUXCY                       : 46
+#      MUXF5                       : 9
+#      MUXF6                       : 2
+#      MUXF7                       : 2
+#      MUXF8                       : 1
+#      VCC                         : 1
+#      XORCY                       : 42
+# FlipFlops/Latches                : 56
+#      FDE                         : 9
+#      FDR                         : 42
+#      FDRE                        : 5
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 22
+#      IBUF                        : 10
+#      OBUF                        : 12
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s100ecp132-4 
+
+ Number of Slices:                       71  out of    960     7%  
+ Number of Slice Flip Flops:             56  out of   1920     2%  
+ Number of 4 input LUTs:                134  out of   1920     6%  
+ Number of IOs:                          23
+ Number of bonded IOBs:                  23  out of     83    27%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock                              | BUFGP                  | 56    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 6.488ns (Maximum Frequency: 154.126MHz)
+   Minimum input arrival time before clock: 7.070ns
+   Maximum output required time after clock: 4.897ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock'
+  Clock period: 6.488ns (frequency: 154.126MHz)
+  Total number of paths / destination ports: 2144 / 112
+-------------------------------------------------------------------------
+Delay:               6.488ns (Levels of Logic = 8)
+  Source:            count_1_22 (FF)
+  Destination:       count_1_0 (FF)
+  Source Clock:      clock rising
+  Destination Clock: clock rising
+
+  Data Path: count_1_22 to count_1_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              2   0.591   0.622  count_1_22 (count_1_22)
+     LUT4:I0->O            1   0.704   0.000  count_1_or00001_wg_lut<0> (count_1_or00001_wg_lut<0>)
+     MUXCY:S->O            1   0.464   0.000  count_1_or00001_wg_cy<0> (count_1_or00001_wg_cy<0>)
+     MUXCY:CI->O           1   0.059   0.000  count_1_or00001_wg_cy<1> (count_1_or00001_wg_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  count_1_or00001_wg_cy<2> (count_1_or00001_wg_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  count_1_or00001_wg_cy<3> (count_1_or00001_wg_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  count_1_or00001_wg_cy<4> (count_1_or00001_wg_cy<4>)
+     MUXCY:CI->O           3   0.459   0.535  count_1_or00001_wg_cy<5> (count_1_or00001_wg_cy<5>)
+     LUT4:I3->O           32   0.704   1.262  count_1_or000046 (count_1_or0000)
+     FDR:R                     0.911          count_1_0
+    ----------------------------------------
+    Total                      6.488ns (4.069ns logic, 2.419ns route)
+                                       (62.7% logic, 37.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock'
+  Total number of paths / destination ports: 129 / 59
+-------------------------------------------------------------------------
+Offset:              7.070ns (Levels of Logic = 6)
+  Source:            mod_sel<1> (PAD)
+  Destination:       data_out_1 (FF)
+  Destination Clock: clock rising
+
+  Data Path: mod_sel<1> to data_out_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            14   1.218   1.175  mod_sel_1_IBUF (mod_sel_1_IBUF)
+     LUT2:I0->O            6   0.704   0.704  cout_mux000041 (cout_mux0000_bdd11)
+     LUT3:I2->O            1   0.704   0.000  data_out_mux0000<1>172_G (N45)
+     MUXF5:I1->O           1   0.321   0.424  data_out_mux0000<1>172 (data_out_mux0000<1>172)
+     LUT4_L:I3->LO         1   0.704   0.104  data_out_mux0000<1>1147 (data_out_mux0000<1>1147)
+     LUT4:I3->O            1   0.704   0.000  data_out_mux0000<1>1280 (data_out_mux0000<1>)
+     FDRE:D                    0.308          data_out_1
+    ----------------------------------------
+    Total                      7.070ns (4.663ns logic, 2.407ns route)
+                                       (66.0% logic, 34.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock'
+  Total number of paths / destination ports: 10 / 10
+-------------------------------------------------------------------------
+Offset:              4.897ns (Levels of Logic = 1)
+  Source:            word_0 (FF)
+  Destination:       word<0> (PAD)
+  Source Clock:      clock rising
+
+  Data Path: word_0 to word<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             16   0.591   1.034  word_0 (word_0)
+     OBUF:I->O                 3.272          word_0_OBUF (word<0>)
+    ----------------------------------------
+    Total                      4.897ns (3.863ns logic, 1.034ns route)
+                                       (78.9% logic, 21.1% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.41 secs
+ 
+--> 
+
+Total memory usage is 238816 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

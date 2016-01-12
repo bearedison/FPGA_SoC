@@ -1,0 +1,3 @@
+verilog work "multi_function_counter.v"
+verilog work "multi_function_counter_tb.v"
+verilog work "F:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
